@@ -1,5 +1,12 @@
 const Tour = require('./../models/tourModel');
 
+const aliasTopTours = (req, res, next) => {
+  req.query.limit = '5';
+  req.query.sort = '-ratingsAverage,price';
+  req.query.fields = 'name,price,ratingsAverage,summary,difficulty';
+  next();
+};
+
 const getAllTours = async (req, res) => {
   try {
     console.log(req.query);
@@ -34,8 +41,8 @@ const getAllTours = async (req, res) => {
     }
 
     // 4) Pagination
-    const page = req.query.page * 1 || 1;
-    const limit = req.query.limit * 1 || 100;
+    const page = +req.query.page || 1;
+    const limit = +req.query.limit || 100;
     const skip = (page - 1) * limit;
 
     query = query.skip(skip).limit(limit);
@@ -142,4 +149,5 @@ module.exports = {
   createTour,
   updateTour,
   deleteTour,
+  aliasTopTours,
 };
