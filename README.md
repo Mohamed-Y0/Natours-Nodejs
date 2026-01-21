@@ -1,9 +1,11 @@
 # Natours API
 
 ## Project Description
+
 This is a Node.js, Express, and MongoDB-based API for managing tours. It provides functionalities for user authentication, tour management, and advanced API features like filtering, sorting, and pagination.
 
 ## Current Features
+
 - User Authentication:
   - User signup and login
   - Password management (forgot password, reset password, update password)
@@ -16,6 +18,7 @@ This is a Node.js, Express, and MongoDB-based API for managing tours. It provide
 - Email Utilities
 
 ## Technologies Used
+
 - Node.js
 - Express.js
 - MongoDB (via Mongoose)
@@ -23,18 +26,6 @@ This is a Node.js, Express, and MongoDB-based API for managing tours. It provide
 - Bcrypt for password hashing
 - Validator for data validation
 
-## Installation
-(Instructions to install and set up the project will go here.)
-
-## Usage
-(Instructions on how to use the API endpoints will go here.)
-
-## Contributing
-(Guidelines for contributing to the project will go here.)
-
-## License
-(License information will go here.)
-
 ## Development Status
-**This project is currently under development.** New features are being added and existing ones are being refined.
 
+**This project is currently under development.** New features are being added and existing ones are being refined.
