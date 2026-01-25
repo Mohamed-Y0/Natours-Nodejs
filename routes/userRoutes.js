@@ -1,14 +1,6 @@
 import express from 'express';
 
-import {
-  createUser,
-  deleteUser,
-  getAllUsers,
-  getUser,
-  updateUser,
-  updateMe,
-  deleteMe,
-} from './../controllers/userController.js';
+import * as userController from './../controllers/userController.js';
 import * as authController from './../controllers/authController.js';
 
 const router = express.Router();
@@ -25,10 +17,24 @@ router.patch(
   authController.updatePassword,
 );
 
-router.patch('/updateMe', authController.protect, updateMe);
-router.delete('/deleteMe', authController.protect, deleteMe);
+router.get(
+  '/me',
+  authController.protect,
+  userController.getMe,
+  userController.getUser,
+);
 
-router.route('/').get(getAllUsers).post(createUser);
-router.route('/:id').get(getUser).patch(updateUser).delete(deleteUser);
+router.patch('/updateMe', authController.protect, userController.updateMe);
+router.delete('/deleteMe', authController.protect, userController.deleteMe);
+
+router
+  .route('/')
+  .get(userController.getAllUsers)
+  .post(userController.createUser);
+router
+  .route('/:id')
+  .get(userController.getUser)
+  .patch(userController.updateUser)
+  .delete(userController.deleteUser);
 
 export default router;
