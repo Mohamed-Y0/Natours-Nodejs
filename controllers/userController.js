@@ -72,13 +72,7 @@ const createUser = (req, res) => {
   });
 };
 
-const updateUser = (req, res) => {
-  res.status(500).json({
-    status: 'err',
-    message: 'This Route Is Not Yet Defined!',
-  });
-};
-
+const updateUser = factory.updateOne(User);
 const deleteUser = factory.deleteOne(User);
 
 module.exports = {
