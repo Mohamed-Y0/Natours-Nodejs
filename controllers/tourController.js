@@ -1,22 +1,22 @@
-const Tour = require('./../models/tourModel');
-// const APIFeatures = require('./../utils/apiFeatures');
-const catchAsync = require('./../utils/catchAsync');
-const factory = require('./handlerFactory');
+import Tour from './../models/tourModel.js';
+// import APIFeatures from './../utils/apiFeatures.js';
+import catchAsync from './../utils/catchAsync.js';
+import * as factory from './handlerFactory.js';
 
-const aliasTopTours = (req, res, next) => {
+export const aliasTopTours = (req, res, next) => {
   req.query.limit = '5';
   req.query.sort = '-ratingsAverage,price';
   req.query.fields = 'name,price,ratingsAverage,summary,difficulty';
   next();
 };
 
-const getAllTours = factory.getAll(Tour);
-const getTour = factory.getOne(Tour, { path: 'reviews' });
-const createTour = factory.createOne(Tour);
-const updateTour = factory.updateOne(Tour);
-const deleteTour = factory.deleteOne(Tour);
+export const getAllTours = factory.getAll(Tour);
+export const getTour = factory.getOne(Tour, { path: 'reviews' });
+export const createTour = factory.createOne(Tour);
+export const updateTour = factory.updateOne(Tour);
+export const deleteTour = factory.deleteOne(Tour);
 
-const getTourStats = catchAsync(async (req, res, next) => {
+export const getTourStats = catchAsync(async (req, res, next) => {
   const stats = await Tour.aggregate([
     { $match: { ratingsAverage: { $gte: 4.5 } } },
     {
@@ -42,7 +42,7 @@ const getTourStats = catchAsync(async (req, res, next) => {
   });
 });
 
-const getMonthlyPlan = catchAsync(async (req, res, next) => {
+export const getMonthlyPlan = catchAsync(async (req, res, next) => {
   const year = +req.params.year;
 
   const plan = await Tour.aggregate([
@@ -75,14 +75,3 @@ const getMonthlyPlan = catchAsync(async (req, res, next) => {
     },
   });
 });
-
-module.exports = {
-  getAllTours,
-  getTour,
-  createTour,
-  updateTour,
-  deleteTour,
-  aliasTopTours,
-  getTourStats,
-  getMonthlyPlan,
-};

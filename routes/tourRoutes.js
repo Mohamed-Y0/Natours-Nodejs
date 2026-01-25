@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
 
-const {
+import {
   createTour,
   deleteTour,
   getAllTours,
@@ -9,9 +9,9 @@ const {
   aliasTopTours,
   getTourStats,
   getMonthlyPlan,
-} = require('./../controllers/tourController');
-const authController = require('./../controllers/authController');
-const reviewRouter = require('./../routes/reviewRoutes');
+} from './../controllers/tourController.js';
+import * as authController from './../controllers/authController.js';
+import reviewRouter from './../routes/reviewRoutes.js';
 
 const router = express.Router();
 
@@ -36,4 +36,4 @@ router
     deleteTour,
   );
 
-module.exports = router;
+export default router;

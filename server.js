@@ -1,4 +1,6 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import app from './app.js';
 
 process.on('uncaughtException', (err) => {
   console.log('Unhandled Exception! - Shutting Down...');
@@ -6,8 +8,7 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
-require('dotenv').config();
-const app = require('./app');
+dotenv.config();
 
 const DB = process.env.DATABASE.replace(
   '<PASSWORD>',

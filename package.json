@@ -4,7 +4,7 @@
   "description": "Learning Node, express and mongoDB",
   "license": "ISC",
   "author": "Slayver",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",

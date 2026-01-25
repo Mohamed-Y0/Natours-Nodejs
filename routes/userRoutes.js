@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
 
-const {
+import {
   createUser,
   deleteUser,
   getAllUsers,
@@ -8,8 +8,8 @@ const {
   updateUser,
   updateMe,
   deleteMe,
-} = require('./../controllers/userController');
-const authController = require('./../controllers/authController');
+} from './../controllers/userController.js';
+import * as authController from './../controllers/authController.js';
 
 const router = express.Router();
 
@@ -31,4 +31,4 @@ router.delete('/deleteMe', authController.protect, deleteMe);
 router.route('/').get(getAllUsers).post(createUser);
 router.route('/:id').get(getUser).patch(updateUser).delete(deleteUser);
 
-module.exports = router;
+export default router;

@@ -1,7 +1,7 @@
-const AppError = require('../utils/appError');
-const User = require('./../models/userModel');
-const catchAsync = require('./../utils/catchAsync');
-const factory = require('./handlerFactory');
+import AppError from '../utils/appError.js';
+import User from './../models/userModel.js';
+import catchAsync from './../utils/catchAsync.js';
+import * as factory from './handlerFactory.js';
 
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
@@ -12,7 +12,7 @@ const filterObj = (obj, ...allowedFields) => {
   return newObj;
 };
 
-const updateMe = catchAsync(async (req, res, next) => {
+export const updateMe = catchAsync(async (req, res, next) => {
   // 1) Create error if user POSTed password data.
   if (req.body.password || req.body.passwordConfirm) {
     return next(
@@ -37,7 +37,7 @@ const updateMe = catchAsync(async (req, res, next) => {
   });
 });
 
-const deleteMe = catchAsync(async (req, res, next) => {
+export const deleteMe = catchAsync(async (req, res, next) => {
   await User.findByIdAndUpdate(req.user.id, { active: false });
 
   res.status(204).json({
@@ -46,24 +46,14 @@ const deleteMe = catchAsync(async (req, res, next) => {
   });
 });
 
-const createUser = (req, res) => {
+export const createUser = (req, res) => {
   res.status(500).json({
     status: 'err',
     message: 'This Route Is Not Yet Defined!, Please use /signup instead',
   });
 };
 
-const getAllUsers = factory.getAll(User);
-const getUser = factory.getOne(User);
-const updateUser = factory.updateOne(User);
-const deleteUser = factory.deleteOne(User);
-
-module.exports = {
-  getAllUsers,
-  getUser,
-  createUser,
-  updateUser,
-  deleteUser,
-  updateMe,
-  deleteMe,
-};
+export const getAllUsers = factory.getAll(User);
+export const getUser = factory.getOne(User);
+export const updateUser = factory.updateOne(User);
+export const deleteUser = factory.deleteOne(User);
