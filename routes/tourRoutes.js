@@ -1,4 +1,5 @@
 const express = require('express');
+
 const {
   createTour,
   deleteTour,
@@ -10,10 +11,13 @@ const {
   getMonthlyPlan,
 } = require('./../controllers/tourController');
 const authController = require('./../controllers/authController');
+const reviewRouter = require('./../routes/reviewRoutes');
 
 const router = express.Router();
 
 // router.param('id', checkId);
+
+router.use('/:tourId/reviews', reviewRouter);
 
 router.route('/top-5-cheap').get(aliasTopTours, getAllTours);
 
