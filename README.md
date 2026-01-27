@@ -13,6 +13,13 @@ This is a Node.js, Express, and MongoDB-based API for managing tours. It provide
 - Tour Management:
   - CRUD operations for tours (Create, Read, Update, Delete)
   - Advanced API features (filtering, sorting, field limiting, pagination)
+- Review Management:
+  - CRUD operations for reviews (Create, Read, Update, Delete)
+
+## Geospatial Features
+
+- **Find Tours Within Radius:** Allows finding tours within a specified distance from a given point.
+- **Calculate Tour Distances:** Provides the functionality to calculate the distance from a starting point to all available tours.
 
 ## Security Features
 
