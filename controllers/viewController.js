@@ -1,5 +1,6 @@
 import Tour from '../models/tourModel.js';
 import catchAsync from '../utils/catchAsync.js';
+import AppError from '../utils/appError.js';
 
 export const getOverview = catchAsync(async (req, res, next) => {
   const tours = await Tour.find();
@@ -19,6 +20,10 @@ export const getTour = catchAsync(async (req, res, next) => {
       select: 'name photo',
     },
   });
+
+  if (!tour) {
+    return next(new AppError('There is no tour with that name.', 404));
+  }
 
   res.status(200).render('tour', {
     title: `${tour.name} Tour`,
