@@ -28,6 +28,7 @@ This is a Node.js, Express, and MongoDB-based application for managing tours. It
 ## Server-Side Rendering (SSR)
 
 The application includes a fully functional frontend built with the **Pug** template engine:
+
 - Dynamic overview page showing all tours
 - Detailed tour pages with interactive maps and review sections
 - User authentication forms (Login & Signup) with cookie-based session management
@@ -38,11 +39,6 @@ The application includes a fully functional frontend built with the **Pug** temp
 
 - **User Profiles:** Upload and automatic resizing of profile photos to square WebP format for optimized performance.
 - **Tour Images:** Multi-image upload for tours, with automatic resizing and conversion to WebP format.
-
-## Geospatial Features
-
-- **Find Tours Within Radius:** Allows finding tours within a specified distance from a given point (latitude/longitude).
-- **Calculate Tour Distances:** Provides the functionality to calculate the distance from a starting point to all available tours.
 
 ## Security Features
 
@@ -81,4 +77,4 @@ The application includes a fully functional frontend built with the **Pug** temp
 
 ## Development Status
 
-**This project is currently under development.** New features are being added and existing ones are being refined.
+More features may be added later - But for now the project is completeز
