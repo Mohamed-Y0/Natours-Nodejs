@@ -14,7 +14,6 @@ export const bookTour = async (tourId) => {
       `http://localhost:8080/api/v1/bookings/checkout-session/${tourId}`,
     );
     const data = await response.json();
-    console.log(data);
 
     // 2) Redirect to stripe checkout page using the URL from the server
     if (data.session && data.session.url) {
