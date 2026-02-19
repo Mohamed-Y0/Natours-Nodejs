@@ -77,4 +77,4 @@ The application includes a fully functional frontend built with the **Pug** temp
 
 ## Development Status
 
-More features may be added later - But for now the project is completeز
+More features may be added later - But for now the project is complete
