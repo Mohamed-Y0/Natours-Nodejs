@@ -10,9 +10,7 @@ const stripe =
 export const bookTour = async (tourId) => {
   try {
     // 1) Get checkout session from API
-    const response = await fetch(
-      `http://localhost:8080/api/v1/bookings/checkout-session/${tourId}`,
-    );
+    const response = await fetch(`/api/v1/bookings/checkout-session/${tourId}`);
     const data = await response.json();
 
     // 2) Redirect to stripe checkout page using the URL from the server
